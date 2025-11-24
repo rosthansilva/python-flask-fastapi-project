@@ -142,3 +142,143 @@ def exibir_inventario():
 # adicionar_componente("Frontend", ["React", "TypeScript", "Vite"])
 # exibir_inventario()
 ```
+
+## 🐍 Continuação da Fase 1: Funções, Tipagem e Ambiente
+
+### 4\. Funções e Argumentos
+
+Funções são blocos de código reutilizáveis. O Python permite que você defina argumentos de diferentes maneiras.
+
+#### A. Definindo Funções
+
+```python
+# Função simples para calcular o total de componentes
+def calcular_total(componentes: dict) -> int:
+    """Calcula o número total de componentes em nosso IDP."""
+    # Retorna a quantidade de chaves (componentes) no dicionário
+    return len(componentes)
+
+# Exemplo de uso
+meu_idp = {"Frontend": ["React"], "Backend": ["FastAPI"]}
+total = calcular_total(meu_idp)
+print(f"Total de Componentes: {total}") # Saída: Total de Componentes: 2
+```
+
+#### B. Argumentos de Palavra-Chave (`kwargs`)
+
+Você pode aceitar um número arbitrário de argumentos de palavra-chave (keyword arguments) usando `**kwargs`.
+
+```python
+# Função que simula a criação de um recurso na nossa IDP
+def criar_recurso(**configuracao):
+    print("Novo Recurso Criado:")
+    for chave, valor in configuracao.items():
+        print(f"- {chave}: {valor}")
+
+criar_recurso(
+    nome="Projeto Alpha", 
+    owner="Time A", 
+    ambiente="dev", 
+    versao="1.0"
+)
+```
+
+### 5\. Type Hinting (Análise de Tipos) - **O segredo do FastAPI\!**
+
+O Python é dinamicamente tipado, mas o **Type Hinting** (anotação de tipos) permite que você indique qual tipo de dado é esperado ou retornado por uma função ou variável.
+
+**O FastAPI usa essas dicas de tipo** para validar seus dados, serializar respostas, e **gerar automaticamente a documentação da API (Swagger UI)**.
+
+| Conceito | O que faz | Exemplo |
+| :--- | :--- | :--- |
+| **Argumentos** | Indica o tipo que a função espera. | `nome: str` |
+| **Retorno** | Indica o tipo que a função retorna. | `-> list` |
+| **`Optional`** | Importado de `typing`, indica que um valor pode ser do tipo X *ou* `None`. | `depto: Optional[str] = None` |
+
+**Exemplo:**
+
+```python
+from typing import List, Optional
+
+# A função espera uma lista de strings e retorna uma string.
+def formatar_tecnologias(techs: List[str]) -> str:
+    # Retorna uma string unida por vírgulas
+    return ", ".join(techs)
+
+# A função espera um float e retorna um float.
+# 'desconto' é Optional, ou seja, pode ser float ou None.
+def calcular_preco(preco_base: float, desconto: Optional[float] = None) -> float:
+    if desconto:
+        return preco_base * (1 - desconto)
+    return preco_base
+
+# Uso
+tecnologias_idp = ["FastAPI", "React", "Docker"]
+print(formatar_tecnologias(tecnologias_idp)) 
+# Saída: FastAPI, React, Docker
+
+print(calcular_preco(100.0, 0.1)) # 10% de desconto -> 90.0
+print(calcular_preco(100.0))       # Sem desconto -> 100.0
+```
+
+### 6\. Ambientes Virtuais (`venv`) - **Obrigatório para Projetos\!**
+
+Um ambiente virtual é um diretório isolado que contém uma instalação Python e todas as bibliotecas (`packages`) que o seu projeto precisa.
+
+**Por que usar?**
+
+  * **Isolamento:** Impede conflitos de versões de bibliotecas entre diferentes projetos.
+  * **Limpeza:** Mantém as dependências do seu projeto separadas do seu sistema operacional.
+
+#### ⚙️ Comandos Essenciais
+
+1.  **Criar o ambiente (dentro da pasta do seu projeto):**
+
+    ```bash
+    python3 -m venv .venv
+    ```
+
+    *(Isso cria uma pasta chamada `.venv`)*
+
+2.  **Ativar o ambiente:**
+
+      * **Linux/macOS:**
+        ```bash
+        source .venv/bin/activate
+        ```
+      * **Windows (PowerShell):**
+        ```bash
+        .venv\Scripts\Activate.ps1
+        ```
+      * **Windows (CMD):**
+        ```bash
+        .venv\Scripts\activate.bat
+        ```
+
+    *(Você saberá que está ativo porque verá `(.venv)` no início da linha de comando.)*
+
+3.  **Instalar dependências (ex: FastAPI):**
+
+    ```bash
+    pip install fastapi uvicorn
+    ```
+
+4.  **Desativar o ambiente:**
+
+    ```bash
+    deactivate
+    ```
+
+-----
+
+## 🎯 Tarefa da Fase 1 (Final)
+
+1.  **Crie a Estrutura do Projeto:** Crie uma pasta chamada `idp_backend`.
+2.  **Crie o Ambiente Virtual:** Entre na pasta `idp_backend` e crie e ative seu ambiente virtual (`.venv`).
+3.  **Instale Dependências:** Instale a biblioteca `typing` (embora já venha com o Python moderno, é bom saber o comando) e qualquer outra que queira testar.
+    ```bash
+    pip install fastapi # Instale por enquanto, só para testar a instalação.
+    ```
+4.  **Teste o Type Hinting:** Crie um arquivo `type_test.py` com uma função que use `List` e `Optional` (como nos exemplos acima) e execute-o.
+
+-----
