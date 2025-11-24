@@ -1,9 +1,3 @@
-Que excelente objetivo! É uma combinação fantástica e muito procurada no mercado. O **FastAPI** para o backend Python e o **React com TypeScript** para o frontend criam uma pilha de desenvolvimento moderna e eficiente.
-
-Vamos construir este projeto de uma **Plataforma Interna de Desenvolvedores (IDP)** passo a passo, abordando os fundamentos do Python/Backend e do React/Frontend de forma progressiva.
-
----
-
 ## 🚀 Fases do Aprendizado e Projeto
 
 Dividiremos o seu aprendizado e o projeto IDP em fases claras.
