@@ -282,3 +282,4 @@ Um ambiente virtual é um diretório isolado que contém uma instalação Python
 4.  **Teste o Type Hinting:** Crie um arquivo `type_test.py` com uma função que use `List` e `Optional` (como nos exemplos acima) e execute-o.
 
 -----
+
