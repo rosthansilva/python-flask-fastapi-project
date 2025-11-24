@@ -142,11 +142,3 @@ def exibir_inventario():
 # adicionar_componente("Frontend", ["React", "TypeScript", "Vite"])
 # exibir_inventario()
 ```
-
------
-
-**Próximo Passo:**
-
-Assim que terminar ou se sentir confortável com essa base (Listas, Dicionários, Condicionais e Loops), podemos avançar para o próximo bloco da **Fase 1**: **Funções, Type Hinting e Ambientes Virtuais**.
-
-Me avise quando estiver pronto para a próxima etapa\!
